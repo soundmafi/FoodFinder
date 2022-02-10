@@ -12,36 +12,33 @@ export function cardCreate(root, data) {
 }
 
 export function cardMealCreate(root,data){
-
     let groundElement = builder('div','meal');
-    groundElement.appendChild(builder('button','meal__btnClose'));
-    groundElement.appendChild(builder('p','meal__title').text = `${data.strMeal}`);
-    groundElement.appendChild(builder('img','meal__picture').src = `${data.strMealThumb}`);
-    groundElement.appendChild(builder('p','meal__category').textContent = `${data.strCategory}`);
-
-
-    console.log(groundElement);
-    let pageMeal = `<div class="meal">
-          <button class="meal__btnClose">X</button>
-          <p class="meal__title">${data.strMeal}</p>
-          <img class="meal__picture"  src="${data.strMealThumb}" alt="meal picture">
-          <p class="meal__category">${data.strCategory}</p>
-          <p class="meal__description">${data.strInstructions}</p>
-          <div class="meal__ingredients">ingredients
-          <p class="meal__ingredient">massive of ingredients</p>
-      </div>`;
-    root.innerHTML += pageMeal;
-    let buttonClose = document.querySelector('.meal__btnClose');
+    let buttonClose = builder('button','meal__btnClose');
+    buttonClose.textContent = `X`;
+    groundElement.appendChild(buttonClose);
+    let title = builder('p','meal__title');
+    title.textContent = `${data.strMeal}`;
+    groundElement.appendChild(title);
+    let photo = builder('img','meal__picture');
+    photo.src = `${data.strMealThumb}`;
+    groundElement.appendChild(photo);
+    let category = builder('p','meal__category');
+    category.textContent =`${data.strCategory}`;
+    groundElement.appendChild(category);
+    let description = builder('p','meal__description');
+    description.textContent =`${data.strInstructions}`;
+    groundElement.appendChild(description);
+    groundElement.appendChild(builder('p','meal__ingredients'));
+    root.appendChild(groundElement);
+    // Просслушка на удаление элемента
     buttonClose.addEventListener('click', e =>{
         console.log(e.target);
     document.querySelector('.meal').remove();
     });
 }
 
-
 export function builder(el,cl){
     let element = document.createElement(el);
     element.classList.add(cl);
-    // console.log(element);
     return element;
 } 

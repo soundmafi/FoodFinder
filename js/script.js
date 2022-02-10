@@ -27,3 +27,6 @@ async function getById(id) {
 }
 
 getData(apiUrl);
+
+
+
