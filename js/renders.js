@@ -3,7 +3,7 @@ export function cardCreate(root, data) {
 
         let card =`<div class="card" data-id='${el.idMeal}'>
                         <img src="${el.strMealThumb}" alt="" class="cardPicture">
-                        <p class="cardTitile">${el.strMeal}</p>
+                        <p class="cardTitle">${el.strMeal}</p>
                         <button class="card__btn">Get More</button>
                     </div>`;
 
