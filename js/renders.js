@@ -1,12 +1,10 @@
 export function cardCreate(root, data) {
     data.forEach((el) => {
-
         let card =`<div class="card" data-id='${el.idMeal}'>
                         <img src="${el.strMealThumb}" alt="" class="cardPicture">
                         <p class="cardTitle">${el.strMeal}</p>
                         <button class="card__btn">Get More</button>
                     </div>`;
-
     root.innerHTML += card;
     });
 }
@@ -41,3 +39,11 @@ export function builder(el,cl){
     element.classList.add(cl);
     return element;
 } 
+
+export function builderCategories(root,list){
+       list.forEach(el => {
+        let category = builder('p','category');
+            category.textContent = el.strCategory;
+            root.appendChild(category);
+       });
+}
