@@ -42,7 +42,7 @@ export function builder(el,cl){
 
 export function builderCategories(root,list){
        list.forEach(el => {
-        let category = builder('p','category');
+        let category = builder('a','category');
             category.textContent = el.strCategory;
             root.appendChild(category);
        });

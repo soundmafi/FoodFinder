@@ -1,3 +1,14 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
 .meal {
   position: fixed;
   top: 0px;
@@ -153,10 +164,32 @@
 
 .inputText {
   border: none;
+  border-radius: 3px;
   width: 40%;
   outline: none;
   padding: 10px;
   font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.inputText::-webkit-input-placeholder {
+  color: #d3d0d0;
+  font-size: 16px;
+}
+
+.inputText:-ms-input-placeholder {
+  color: #d3d0d0;
+  font-size: 16px;
+}
+
+.inputText::-ms-input-placeholder {
+  color: #d3d0d0;
+  font-size: 16px;
+}
+
+.inputText::placeholder {
+  color: #d3d0d0;
+  font-size: 16px;
 }
 
 .category {
@@ -166,7 +199,17 @@
   padding: 5px 15px;
   border-radius: 5px;
   text-transform: uppercase;
-  margin-bottom: -10px;
+  margin-bottom: 3px;
+  border: 1px solid #cbcbcb;
+}
+
+.category:hover {
+  cursor: pointer;
+  background-color: #7d89c0;
+}
+
+.category:active {
+  background-color: #682e2e;
 }
 
 .categories {
@@ -176,7 +219,8 @@
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   width: 60%;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 /*# sourceMappingURL=styles.css.map */

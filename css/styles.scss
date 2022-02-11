@@ -1,3 +1,12 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+a{
+    text-decoration: none;
+}
+
 .meal{
     position: fixed;
     top: 0px;
@@ -118,15 +127,17 @@
 }
 .inputText{
     border: none;
+    border-radius: 3px;
     width: 40%;
     outline: none;
     padding: 10px;
     font-size: 18px;
+    margin-bottom: 10px;
     &::placeholder{
+        color: #d3d0d0;
+        font-size: 16px;
     }
 }
-
-
 .category{
     color: #ffffff;
     font-size: 16px;
@@ -134,12 +145,20 @@
     padding: 5px 15px;
     border-radius: 5px;
     text-transform:uppercase;
-    margin-bottom: -10px;
+    margin-bottom: 3px;
+    border: 1px solid #cbcbcb;
+    &:hover{
+        cursor: pointer;
+        background-color: #7d89c0;
+    }
+    &:active{
+        background-color: #682e2e;
+    }
 }
 
 .categories{
     display: flex;
     flex-wrap: wrap;
     width: 60%;
-    justify-content: space-around;
+    justify-content: center;
 }

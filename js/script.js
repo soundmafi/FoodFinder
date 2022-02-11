@@ -18,7 +18,6 @@ async function getData(url) {
     const response = await fetch(url);
     const data = await response.json();
     storage = data.meals;
-    console.log(storage);
     cardCreate(pointCard,data.meals);
   }
 
@@ -30,7 +29,7 @@ async function getById(id) {
 }
 getData(apiUrl);
 
-
+// удаление из дерева карточек
 function clear() {
     pointCard.innerHTML = '';
 }
@@ -40,21 +39,34 @@ inputText.addEventListener('input', (event) => {
    let resultFilter = [];
    let searchText = event.target.value;
    resultFilter = storage.filter((el) => el.strMeal.toLowerCase().includes(searchText.toLowerCase()));
-
-   console.log(resultFilter);
    clear();
    cardCreate(pointCard,resultFilter);
 });
 
-
 //Список категорий
-let urlCategory =`https://www.themealdb.com/api/json/v1/1/list.php?c=list`;
+let urlCategory =`https://www.themealdb.com/api/json/v1/1/list.php?c=Seafood`;
 
-    async function getCategoryList(url){
-        
-        let result = await fetch(url);
-        let categories = await result.json();
-        console.log(categories);
-        builderCategories(pointCategory,categories.meals);
-    }
-    getCategoryList(urlCategory);
+//Получение списка категорий
+async function getCategoryList(url){
+    let result = await fetch(url);
+    let categories = await result.json();
+    builderCategories(pointCategory,categories.meals);
+}
+getCategoryList(urlCategory);
+
+// Запрос выбранной категории и отрисовка
+async function getFilterCategory(cat){
+    let res = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${cat}`);
+    let arrCategory = await res.json();
+    storage = arrCategory;
+    clear();
+    cardCreate(pointCard,storage.meals);
+    return;
+}
+
+//прослушка на выбор по категории
+pointCategory.addEventListener('click', (event) => {
+    let searchText = event.target.textContent;
+    clear();
+    getFilterCategory(searchText);
+});
