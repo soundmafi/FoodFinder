@@ -8,14 +8,7 @@
   width: 100%;
   margin: 0 auto;
   padding: 5px 30px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  display: block;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -38,6 +31,7 @@
   font-weight: 600;
   color: #ffffff;
   text-transform: uppercase;
+  text-align: center;
 }
 
 .meal__picture {
@@ -45,7 +39,7 @@
   -o-object-fit: cover;
      object-fit: cover;
   border-radius: 5px;
-  margin-bottom: 50px;
+  margin-bottom: 20px;
 }
 
 .meal__category {

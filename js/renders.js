@@ -32,7 +32,6 @@ export function cardMealCreate(root,data){
     root.appendChild(groundElement);
     // Просслушка на удаление элемента
     buttonClose.addEventListener('click', e =>{
-        console.log(e.target);
     document.querySelector('.meal').remove();
     });
 }

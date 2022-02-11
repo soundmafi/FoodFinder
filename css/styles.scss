@@ -7,9 +7,11 @@
     width: 100%;
     margin: 0 auto;
     padding: 5px 30px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    // display: flex;
+    // flex-wrap: wrap;
+    // justify-content: center;
+
+    display: block;
     align-items: center;
     background-color: #000000;
 }
@@ -29,12 +31,13 @@
     font-weight: 600;
     color: #ffffff;
     text-transform: uppercase;
+    text-align: center;
 }
 .meal__picture {
     width: 60%;
     object-fit: cover;
     border-radius: 5px;
-    margin-bottom: 50px;
+    margin-bottom: 20px;
 }
 .meal__category {
     color: #ffffff;
@@ -52,8 +55,7 @@
 .meal__ingredient {
 }
 
-.container {
-}
+
 .box {
         display: flex;
         flex-wrap: wrap;
