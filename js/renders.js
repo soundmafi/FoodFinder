@@ -47,3 +47,11 @@ export function builderCategories(root,list){
             root.appendChild(category);
        });
 }
+
+export function builderAreas(root,list){
+    list.forEach(el => {
+        let area = builder('a','area');
+            area.textContent = el.strArea;
+            root.appendChild(area);
+       });
+}

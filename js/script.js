@@ -1,12 +1,15 @@
-import {cardCreate, cardMealCreate, builderCategories} from './renders.js';
+import {cardCreate, cardMealCreate, builderCategories, builderAreas} from './renders.js';
 const pointCard = document.querySelector('.box');
 const pointMeal = document.querySelector('.modal');
 const inputText = document.querySelector('.inputText');
 const pointCategory = document.querySelector('.categories');
+const pointArea = document.querySelector('.areas');
+
 let storage = [];
 
-let apiUrl = `https://themealdb.com/api/json/v1/1/filter.php?i=`;
 
+
+let apiUrl = `https://themealdb.com/api/json/v1/1/filter.php?i=`;
 pointCard.addEventListener('click', e => {
     if (e.target.classList.value === 'card__btn'){
         let id = e.target.parentNode.getAttribute('data-id');
@@ -14,6 +17,7 @@ pointCard.addEventListener('click', e => {
     }
 });
 
+// Получение всех карточек
 async function getData(url) {
     const response = await fetch(url);
     const data = await response.json();
@@ -21,7 +25,8 @@ async function getData(url) {
     cardCreate(pointCard,data.meals);
   }
 
-async function getById(id) {
+//Получение блюда по Id
+  async function getById(id) {
     let url = `https://themealdb.com/api/json/v1/1/lookup.php?i=${id}`;
     const res = await fetch(url);
     const data = await res.json();
@@ -70,3 +75,29 @@ pointCategory.addEventListener('click', (event) => {
     clear();
     getFilterCategory(searchText);
 });
+
+//Список стран
+let urlAreaList ='https://www.themealdb.com/api/json/v1/1/list.php?a=list';
+
+async function getListArea(url){
+    let answer = await fetch(url);
+    let result = await answer.json();
+    console.log(result);
+    builderAreas(pointArea,result.meals);
+}
+getListArea(urlAreaList);
+
+pointArea.addEventListener('click', (event) => {
+    let searchText = event.target.textContent;
+    clear();
+    getFilterArea(searchText);
+});
+
+async function getFilterArea(cat){
+        let res = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?a=${cat}`);
+        let arrArea = await res.json();
+        storage = arrArea;
+        clear();
+        cardCreate(pointCard,storage.meals);
+        return;
+}
